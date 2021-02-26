@@ -53,12 +53,13 @@ class Game:
 
         return True
 
+    # отрисовывает возможные ходы
     def draw_valid_moves(self, moves):
         for move in moves:
             row, col = move
             pygame.draw.circle(self.win, BLUE,
                                (col * SQUARE_SIZE + SQUARE_SIZE // 2, row * SQUARE_SIZE + SQUARE_SIZE // 2), 15)
-
+    # смена
     def change_turn(self):
         self.valid_moves = {}
         if self.turn == RED:

@@ -1,20 +1,27 @@
 import pygame
-from constants import WIDTH, HEIGHT, SQUARE_SIZE, RED
+from constants import WIDTH, HEIGHT, SQUARE_SIZE
 from init import Game
 
 FPS = 60
 
+# создаём размеры игрового окна
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
+# создаём название окна
 pygame.display.set_caption('Checkers')
+# инициализируем пайгейм и работаем с фоновым аудиофайлом
+pygame.init()
+pygame.mixer.music.load('image/1st_sound.mp3')
+pygame.mixer.music.play(-1)
 
 
+# получение координат
 def get_row_col_from_mouse(pos):
     x, y = pos
     row = y // SQUARE_SIZE
     col = x // SQUARE_SIZE
     return row, col
 
-
+# начало игрового процесса
 def main():
     run = True
     clock = pygame.time.Clock()

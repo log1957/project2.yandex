@@ -4,11 +4,12 @@ WIDTH, HEIGHT = 800, 800
 ROWS, COLS = 8, 8
 SQUARE_SIZE = WIDTH//COLS
 
-# rgb
+# задание цветов для клеток поля и пешек
 RED = (255, 0, 0)
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 BLUE = (0, 0, 255)
 GREY = (128, 128, 128)
 
+# подгрузка изображения для "дамки"
 CROWN = pygame.transform.scale(pygame.image.load('image/crown.png'), (44, 25))

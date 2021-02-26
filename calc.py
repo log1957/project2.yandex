@@ -1,7 +1,7 @@
 from constants import SQUARE_SIZE, GREY, CROWN
 import pygame
 
-
+# основная задача класса - отрисовать пешки (сначала рисуются серые круги, поверх которых уже накладывается цвет)
 class Piece:
     PADDING = 15
     OUTLINE = 2

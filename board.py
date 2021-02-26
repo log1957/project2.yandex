@@ -3,6 +3,7 @@ from constants import BLACK, ROWS, RED, SQUARE_SIZE, COLS, WHITE
 from calc import Piece
 
 
+# основная задача класса - отрисовка доски и создание возможности передвижения пешек
 class Board:
     def __init__(self):
         self.board = []
@@ -10,6 +11,7 @@ class Board:
         self.red_kings = self.white_kings = 0
         self.create_board()
 
+    # отрисовка доски
     def draw_squares(self, win):
         win.fill(BLACK)
         for row in range(ROWS):
@@ -69,6 +71,7 @@ class Board:
 
         return None
 
+    # доступные ходы
     def get_valid_moves(self, piece):
         moves = {}
         left = piece.col - 1
@@ -84,6 +87,7 @@ class Board:
 
         return moves
 
+    # ход влево
     def _traverse_left(self, start, stop, step, color, left, skipped=[]):
         moves = {}
         last = []
@@ -117,6 +121,7 @@ class Board:
 
         return moves
 
+    # ход вправо
     def _traverse_right(self, start, stop, step, color, right, skipped=[]):
         moves = {}
         last = []
