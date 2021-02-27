@@ -13,6 +13,70 @@ pygame.init()
 pygame.mixer.music.load('image/1st_sound.mp3')
 pygame.mixer.music.play(-1)
 
+# start screen
+def start_screen():
+    intro_text = ["АНГЛИЙСКИЕ ШАХМАТЫ", "ЧТОБЫ НАЧАТЬ ИГРУ НАЖМИТЕ ЛЮБУЮ КНОПКУ"
+                  ]
+
+    run2 = True
+    screen_size = (800, 800)
+    screen = pygame.display.set_mode(screen_size)
+    clock = pygame.time.Clock()
+    fon = pygame.transform.scale(pygame.image.load('image/fon.png'), screen_size)
+    screen.blit(fon, (0, 0))
+    font = pygame.font.Font(None, 30)
+    text_coord = 50
+    for line in intro_text:
+        string_rendered = font.render(line, 1, pygame.Color('red'))
+        intro_rect = string_rendered.get_rect()
+        text_coord += 10
+        intro_rect.top = text_coord
+        intro_rect.x = 10
+        text_coord += intro_rect.height
+        screen.blit(string_rendered, intro_rect)
+
+    while run2:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run2 = False
+            elif event.type == pygame.KEYDOWN or \
+                    event.type == pygame.MOUSEBUTTONDOWN:
+                return  # начинаем игру
+        pygame.display.flip()
+        clock.tick(FPS)
+
+
+def end_screen():
+    intro_text = ["ИГРА ОКОНЧЕНА"
+                  ]
+
+    run2 = True
+    screen_size = (800, 800)
+    screen = pygame.display.set_mode(screen_size)
+    clock = pygame.time.Clock()
+    fon = pygame.transform.scale(pygame.image.load('image/fon.png'), screen_size)
+    screen.blit(fon, (0, 0))
+    font = pygame.font.Font(None, 30)
+    text_coord = 50
+    for line in intro_text:
+        string_rendered = font.render(line, 1, pygame.Color('black'))
+        intro_rect = string_rendered.get_rect()
+        text_coord += 10
+        intro_rect.top = text_coord
+        intro_rect.x = 10
+        text_coord += intro_rect.height
+        screen.blit(string_rendered, intro_rect)
+
+    while run2:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run2 = False
+            elif event.type == pygame.KEYDOWN or \
+                    event.type == pygame.MOUSEBUTTONDOWN:
+                return  # начинаем игру
+        pygame.display.flip()
+        clock.tick(FPS)
+
 
 # получение координат
 def get_row_col_from_mouse(pos):
@@ -26,6 +90,7 @@ def main():
     run = True
     clock = pygame.time.Clock()
     game = Game(WIN)
+    start_screen()
 
     while run:
         clock.tick(FPS)
@@ -45,7 +110,7 @@ def main():
 
         game.update()
 
-    pygame.quit()
+    end_screen()
 
 
 main()
